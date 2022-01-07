@@ -1,6 +1,16 @@
 {% extends 'estudiantes/base.html' %}
 
 {% block content %}
-  <a>Lista de estudiantes</a>
-  <a>Más info aquí</a>
+    {% for alumnx in alumnxs %}
+        <div class="alumnxs">
+
+            <a href="{% url 'alumnx_nuevo' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <p>{{ alumnx.nombre|linebreaksbr}}</p>
+            <p>{{ alumnx.num_cuenta|linebreaksbr }}</p>
+            <p>{{ alumnx.email|linebreaksbr }}</p>
+            <p>{{ alumnx.universidad|linebreaksbr }}</p>
+            <p>{{ alumnx.asignatura|linebreaksbr }}</p>
+            <p>{{ alumnx.ciclo|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
 {% endblock %}
