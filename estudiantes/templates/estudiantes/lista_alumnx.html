@@ -3,17 +3,27 @@
 {% block content %}
 
     <a href="{% url 'alumnx_nuevo' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-    {% for alumnx in alumnxs %}
-        <div class="alumnxs">
-          <table>
-            <p>{{ alumnx.nombre|linebreaksbr}}</p>
-            <p>{{ alumnx.num_cuenta|linebreaksbr }}</p>
-            <p>{{ alumnx.email|linebreaksbr }}</p>
-            <p>{{ alumnx.universidad|linebreaksbr }}</p>
-            <p>{{ alumnx.asignatura|linebreaksbr }}</p>
-            <p>{{ alumnx.ciclo|linebreaksbr }}</p>
-            <a class="btn btn-default" href="{% url 'alumnx_edit' pk=alumnx.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-          </table>
-        </div>
-    {% endfor %}
+
+    <table class="content-table">
+      <tr>
+        <th>Nombre</th>
+        <th>Número de cuenta</th>
+        <th>Correo</th>
+        <th>Universidad</th>
+        <th>Asignatura</th>
+        <th>Ciclo</th>
+      </tr>
+      {% for alumnx in alumnxs %}
+      <tr>
+            <td>{{ alumnx.nombre|linebreaksbr}}</td>
+            <td>{{ alumnx.num_cuenta|linebreaksbr }}</td>
+            <td>{{ alumnx.email|linebreaksbr }}</td>
+            <td>{{ alumnx.universidad|linebreaksbr }}</td>
+            <td>{{ alumnx.asignatura|linebreaksbr }}</td>
+            <td>{{ alumnx.ciclo|linebreaksbr }}</td>
+            <td><a class="btn btn-default" href="{% url 'alumnx_edit' pk=alumnx.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+            <td><a href="{% url 'eliminar_alumnx' pk=alumnx.pk %}" class = "btn btn-danger">Borrar</a></td>
+      </tr>
+      {% endfor %}
+    </table>
 {% endblock %}
