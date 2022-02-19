@@ -2,7 +2,8 @@
 
 {% block content %}
 
-    <a href="{% url 'alumnx_nuevo' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'alumnx_nuevo' %}" class="btn btn-primary">Alumnx nuevx</a>
+    <a href="{% url 'lista_calif1erpar' %}" class="btn btn-success">Calificaciones</a>
 
     <table class="content-table">
       <tr>
@@ -15,7 +16,7 @@
       </tr>
       {% for alumnx in alumnxs %}
       <tr>
-            <td>{{ alumnx.nombre|linebreaksbr}}</td>
+            <td>{{ alumnx.nombre|linebreaksbr }}</td>
             <td>{{ alumnx.num_cuenta|linebreaksbr }}</td>
             <td>{{ alumnx.email|linebreaksbr }}</td>
             <td>{{ alumnx.universidad|linebreaksbr }}</td>
@@ -23,7 +24,10 @@
             <td>{{ alumnx.ciclo|linebreaksbr }}</td>
             <td><a class="btn btn-default" href="{% url 'alumnx_edit' pk=alumnx.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href="{% url 'eliminar_alumnx' pk=alumnx.pk %}" class = "btn btn-danger">Borrar</a></td>
+            <!-- <td><a href="{% url 'primer_parcial' %}" class="btn btn-success">Calificaciones</a></td> -->
+            
       </tr>
       {% endfor %}
     </table>
+
 {% endblock %}

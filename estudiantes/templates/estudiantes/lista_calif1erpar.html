@@ -1,0 +1,34 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block content %}
+
+<a href="{% url 'primer_parcial' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
+<table class="content-table">
+    <tr>
+      <th>Nombre</th>
+      <th>Monografía</th>
+      <th>Exposición</th>
+      <th>Participación</th>
+      <th>Monografía %</th>
+      <th>Exposición %</th>
+      <th>Participación %</th>
+      <th>Calificación primer parcial</th>
+    </tr>
+    {% for primer_parcial in primer_parcials %}
+    <tr>
+         <td>{{ primer_parcial.nombre|linebreaksbr }}</td>
+         <td>{{ primer_parcial.calif_mono|linebreaksbr }}</td>
+         <td>{{ primer_parcial.calif_expo_1er|linebreaksbr }}</td>
+         <td>{{ primer_parcial.participacion_1er|linebreaksbr }}</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td><a class="btn btn-default" href="{% url 'primer_parcial_edit' pk=primer_parcial.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>  
+
+    </tr>
+    {% endfor %}
+   
+  </table>
+
+{% endblock %}

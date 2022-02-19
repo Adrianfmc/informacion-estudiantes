@@ -11,7 +11,7 @@ class Primer_parcialForm(forms.ModelForm):
 
     class Meta:
         model = Primer_parcial
-        fields = ('calif_mono', 'calif_expo_1er', 'participacion_1er',)
+        fields = ('nombre', 'calif_mono', 'calif_expo_1er', 'participacion_1er',)
 
 class Segundo_parcialForm(forms.ModelForm):
 

@@ -1,10 +1,10 @@
 {% extends 'estudiantes/base.html' %}
 
 {% block content %}
-    <h2>Editar datos Alumnx</h2>
+    <h2>Editar calificación primer parcial</h2>
     <form method="POST" class="post-form">{% csrf_token %}
       <table>
-        {{ form_alumnx.as_p }}
+        {{ form_1erparcial.as_p }}
       </table>
         <button type="submit" class="save btn btn-default">Guardar</button>
     </form>
