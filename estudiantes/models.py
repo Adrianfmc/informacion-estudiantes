@@ -29,9 +29,9 @@ class Alumnx(models.Model):
 
 class Primer_parcial(models.Model):
     nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE)
-    calif_mono = models.DecimalField(max_digits=2, decimal_places=1)
-    calif_expo_1er = models.DecimalField(max_digits=2, decimal_places=1)
-    participacion_1er = models.DecimalField(max_digits=2, decimal_places=1)
+    calif_mono = models.DecimalField(max_digits=3, decimal_places=1)
+    calif_expo_1er = models.DecimalField(max_digits=3, decimal_places=1)
+    participacion_1er = models.DecimalField(max_digits=3, decimal_places=1)
 
 
     def __str__(self):
@@ -39,18 +39,18 @@ class Primer_parcial(models.Model):
 
 class Segundo_parcial(models.Model):
     nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE)
-    calif_ensay_2do = models.DecimalField(max_digits=2, decimal_places=1, help_text="Ingrese la calificación del ensayo (2do parcial)")
-    calif_expo_2do = models.DecimalField(max_digits=2, decimal_places=1, help_text="Ingrese la calificación de la exposición (2do parcial)")
-    participacion_2do = models.IntegerField(default=0)
+    calif_ensay_2do = models.DecimalField(max_digits=3, decimal_places=1, help_text="Ingrese la calificación del ensayo (2do parcial)")
+    calif_expo_2do = models.DecimalField(max_digits=3, decimal_places=1, help_text="Ingrese la calificación de la exposición (2do parcial)")
+    participacion_2do = models.DecimalField(max_digits=3, decimal_places=1)
 
     def __str__(self):
         return self.nombre
 
 class Final(models.Model):
     nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE)
-    calif_ensay_final = models.DecimalField(max_digits=2, decimal_places=1, help_text="Ingrese la calificación del ensayo (3er parcial)")
-    calif_expo_final = models.DecimalField(max_digits=2, decimal_places=1, help_text="Ingrese la calificación de la exposición (3er parcial)")
-    participacion_final = models.IntegerField(default=0)
+    calif_ensay_final = models.DecimalField(max_digits=3, decimal_places=1, help_text="Ingrese la calificación del ensayo (3er parcial)")
+    calif_expo_final = models.DecimalField(max_digits=3, decimal_places=1, help_text="Ingrese la calificación de la exposición (3er parcial)")
+    participacion_final = models.DecimalField(max_digits=3, decimal_places=1)
 
     def __str__(self):
             return self.nombre
