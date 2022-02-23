@@ -1,0 +1,35 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block content %}
+
+<a href="{% url 'final_parcial' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
+<table class="content-table">
+    <tr>
+      <th>Nombre</th>
+      <th>Monografía</th>
+      <th>Exposición</th>
+      <th>Participación</th>
+      <th>Monografía %</th>
+      <th>Exposición %</th>
+      <th>Participación %</th>
+      <th>Calificación primer parcial</th>
+    </tr>
+    {% for final_parcial in final_parcials %}
+    <tr>
+         <td>{{ final_parcial.nombre|linebreaksbr }}</td>
+         <td>{{ final_parcial.calif_ensay_final|linebreaksbr }}</td>
+         <td>{{ final_parcial.calif_expo_final|linebreaksbr }}</td>
+         <td>{{ final_parcial.participacion_final|linebreaksbr }}</td>
+         <td>{{ final_parcial.calif_ensayo_final60|linebreaksbr }}</td>
+         <td>{{ final_parcial.calif_expo_final0|linebreaksbr }}</td>
+         <td>{{ final_parcial.participacion_final30|linebreaksbr }}</td>
+         <td>{{ final_parcial.promedio_final_parcial|linebreaksbr }}</td>
+         <td><a class="btn btn-default" href="{% url 'final_parcial_edit' pk=final_parcial.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>  
+
+    </tr>
+    {% endfor %}
+   
+  </table>
+
+{% endblock %}

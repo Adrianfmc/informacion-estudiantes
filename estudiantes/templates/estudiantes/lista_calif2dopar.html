@@ -1,0 +1,35 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block content %}
+
+<a href="{% url 'segundo_parcial' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
+<table class="content-table">
+    <tr>
+      <th>Nombre</th>
+      <th>Monografía</th>
+      <th>Exposición</th>
+      <th>Participación</th>
+      <th>Monografía %</th>
+      <th>Exposición %</th>
+      <th>Participación %</th>
+      <th>Calificación primer parcial</th>
+    </tr>
+    {% for segundo_parcial in segundo_parcials %}
+    <tr>
+         <td>{{ segundo_parcial.nombre|linebreaksbr }}</td>
+         <td>{{ segundo_parcial.calif_ensay_2do|linebreaksbr }}</td>
+         <td>{{ segundo_parcial.calif_expo_2do|linebreaksbr }}</td>
+         <td>{{ segundo_parcial.participacion_2do|linebreaksbr }}</td>
+         <td>{{ segundo_parcial.calif_ensayo_2do60 |linebreaksbr }}</td>
+         <td>{{ segundo_parcial.calif_expo_2do10 |linebreaksbr }}</td>
+         <td>{{ segundo_parcial.participacion_2do30|linebreaksbr }}</td>
+         <td>{{ segundo_parcial.promedio_2doparcial |linebreaksbr }}</td>
+         <td><a class="btn btn-default" href="{% url 'segundo_parcial_edit' pk=segundo_parcial.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>  
+
+    </tr>
+    {% endfor %}
+   
+  </table>
+
+{% endblock %}

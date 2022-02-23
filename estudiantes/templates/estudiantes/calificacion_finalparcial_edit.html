@@ -1,0 +1,11 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block content %}
+    <h2>Editar calificación parcial final</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+      <table>
+        {{ form_finalparcial.as_p }}
+      </table>
+        <button type="submit" class="save btn btn-default">Guardar</button>
+    </form>
+{% endblock %}

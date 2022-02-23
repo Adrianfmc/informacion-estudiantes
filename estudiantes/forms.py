@@ -17,13 +17,13 @@ class Segundo_parcialForm(forms.ModelForm):
 
     class Meta:
         model = Segundo_parcial
-        fields = ('calif_ensay_2do', 'calif_expo_2do', 'participacion_2do',)
+        fields = ('nombre','calif_ensay_2do', 'calif_expo_2do', 'participacion_2do',)
 
 class FinalForm(forms.ModelForm):
 
     class Meta:
         model = Final
-        fields = ('calif_ensay_final', 'calif_expo_final', 'participacion_final',)
+        fields = ('nombre','calif_ensay_final', 'calif_expo_final', 'participacion_final',)
 
 class AutobiografiaForm(forms.ModelForm):
 

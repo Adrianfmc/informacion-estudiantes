@@ -3,7 +3,9 @@
 {% block content %}
 
     <a href="{% url 'alumnx_nuevo' %}" class="btn btn-primary">Alumnx nuevx</a>
-    <a href="{% url 'lista_calif1erpar' %}" class="btn btn-success">Calificaciones</a>
+    <a href="{% url 'lista_calif1erpar' %}" class="btn btn-success">Calificaciones primer parcial</a>
+    <a href="{% url 'lista_calif2dopar' %}" class="btn btn-warning">Calificaciones segundo parcial</a>
+    <a href="{% url 'lista_calif_final' %}" class="btn btn-info">Calificaciones parcial final</a>
 
     <table class="content-table">
       <tr>
@@ -24,7 +26,7 @@
             <td>{{ alumnx.ciclo|linebreaksbr }}</td>
             <td><a class="btn btn-default" href="{% url 'alumnx_edit' pk=alumnx.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href="{% url 'eliminar_alumnx' pk=alumnx.pk %}" class = "btn btn-danger">Borrar</a></td>
-            <!-- <td><a href="{% url 'primer_parcial' %}" class="btn btn-success">Calificaciones</a></td> -->
+
             
       </tr>
       {% endfor %}
