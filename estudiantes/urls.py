@@ -15,4 +15,7 @@ urlpatterns = [
     path('estudiantes/listacalif_final_parcial/', views.lista_calif_final, name='lista_calif_final'),
     path('estudiantes/final_parcial/', views.final_parcial, name='final_parcial'),
     path('estudiantes/editar_final_parcial/<int:pk>/', views.final_parcial_edit, name='final_parcial_edit'),
+    path('estudiantes/lista_autobiografia/', views.lista_autobiografia, name='lista_autobiografia'),
+    path('estudiantes/autobiografia/', views.autobiografia, name='autobiografia'),
+    path('estudiantes/editar_autobiografia/<int:pk>/', views.autobiografia_edit, name='autobiografia_edit'),
 ]

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Alumnx, Primer_parcial, Segundo_parcial, Final
+from .models import Alumnx, Primer_parcial, Segundo_parcial, Final, Autobiografia
 from .forms import AlumnxForm, Primer_parcialForm, Segundo_parcialForm, FinalForm, AutobiografiaForm
 from django.contrib import messages
 from django.db.models.functions import Coalesce
@@ -48,12 +48,16 @@ def lista_calif1erpar(request):
     primer_parcials = Primer_parcial.objects.annotate(calif_mono60=F('calif_mono')*Decimal(.6),
                                                     calif_expo_1er10=F('calif_expo_1er')*Decimal(.1),
                                                     participacion_1er30=F('participacion_1er')*Decimal(.3),
-                                                    promedio_1erparcial=(F('calif_mono')*Decimal(.6))+(F('calif_expo_1er')*Decimal(.1))+(F('participacion_1er')*Decimal(.3))).order_by('nombre')
+                                                    promedio_1erparcial=(F('calif_mono')*Decimal(.6))+
+                                                    (F('calif_expo_1er')*Decimal(.1))+
+                                                    (F('participacion_1er')*Decimal(.3))).order_by('nombre')
+    
     return render(request, 'estudiantes/lista_calif1erpar.html', {'primer_parcials':primer_parcials})
 
 def primer_parcial(request):
     if request.method == "POST":
         form_1erparcial = Primer_parcialForm(request.POST)
+ 
         if form_1erparcial.is_valid():
             primer_parcial = form_1erparcial.save()
             primer_parcial.save()
@@ -135,3 +139,36 @@ def final_parcial_edit(request, pk):
     else:
         form_finalparcial = FinalForm(instance=final_parcial)
     return render(request, 'estudiantes/calificacion_finalparcial_edit.html', {'form_finalparcial': form_finalparcial})
+
+def lista_autobiografia(request):
+    autobiografias = Autobiografia.objects.order_by('nombre')
+    print("hola")
+    
+    return render(request, 'estudiantes/lista_autobiografia.html', {'autobiografias':autobiografias})
+
+def autobiografia(request):
+    if request.method == "POST":
+        form_autobiografia = AutobiografiaForm(request.POST)
+        print("hola 2")
+ 
+        if form_autobiografia.is_valid():
+            autobiografia = form_autobiografia.save()
+            autobiografia.save()
+            print("hola 3")
+            return redirect('lista_autobiografia')
+    else:
+        form_autobiografia = AutobiografiaForm()
+        print("hola 4")
+    return render(request, 'estudiantes/calificacion_autobiografia_edit.html', {'form_autobiografia':form_autobiografia})
+
+def autobiografia_edit(request, pk):
+    autobiografia = get_object_or_404(Autobiografia, pk=pk)
+    if request.method == "POST":
+        form_autobiografia = AutobiografiaForm(request.POST, instance=autobiografia)
+        if form_autobiografia.is_valid():
+            autobiografia = form_autobiografia.save()
+            autobiografia.save()
+            return redirect('lista_autobiografia')
+    else:
+        form_autobiografia = AutobiografiaForm(instance=autobiografia)
+    return render(request, 'estudiantes/calificacion_autobiografia_edit.html', {'form_autobiografia': form_autobiografia})

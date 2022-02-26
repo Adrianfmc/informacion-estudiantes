@@ -21,10 +21,10 @@
          <td>{{ segundo_parcial.calif_ensay_2do|linebreaksbr }}</td>
          <td>{{ segundo_parcial.calif_expo_2do|linebreaksbr }}</td>
          <td>{{ segundo_parcial.participacion_2do|linebreaksbr }}</td>
-         <td>{{ segundo_parcial.calif_ensayo_2do60 |linebreaksbr }}</td>
-         <td>{{ segundo_parcial.calif_expo_2do10 |linebreaksbr }}</td>
-         <td>{{ segundo_parcial.participacion_2do30|linebreaksbr }}</td>
-         <td>{{ segundo_parcial.promedio_2doparcial |linebreaksbr }}</td>
+         <td>{{ segundo_parcial.calif_ensayo_2do60|floatformat:1|linebreaksbr }}</td>
+         <td>{{ segundo_parcial.calif_expo_2do10|floatformat:1|linebreaksbr }}</td>
+         <td>{{ segundo_parcial.participacion_2do30|floatformat:1|linebreaksbr }}</td>
+         <td>{{ segundo_parcial.promedio_2doparcial|floatformat:1|linebreaksbr }}</td>
          <td><a class="btn btn-default" href="{% url 'segundo_parcial_edit' pk=segundo_parcial.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>  
 
     </tr>

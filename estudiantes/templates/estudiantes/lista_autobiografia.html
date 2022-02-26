@@ -1,0 +1,24 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block content %}
+
+<a href="{% url 'autobiografia' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
+<table class="content-table">
+    <tr>
+      <th>Nombre</th>
+      <th>Autobiografía</th>
+    </tr>
+    {% for autobiografia in autobiografias %}
+    <tr>
+         <td>{{ autobiografia.nombre|linebreaksbr }}</td>
+         <td>{{ autobiografia.autobiografia|linebreaksbr }}</td>
+   
+         <td><a class="btn btn-default" href="{% url 'autobiografia_edit' pk=autobiografia.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>  
+
+    </tr>
+    {% endfor %}
+   
+  </table>
+
+{% endblock %}
