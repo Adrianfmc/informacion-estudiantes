@@ -22,6 +22,13 @@ class Primer_parcialForm(forms.ModelForm):
             raise ValidationError("Ya está calificadx este alumnx")
         return clean_data
 
+class Primer_parcial_edit_Form(forms.ModelForm):
+
+    class Meta:
+        model = Primer_parcial
+        fields = ('nombre', 'calif_mono', 'calif_expo_1er', 'participacion_1er',)
+    
+
 class Segundo_parcialForm(forms.ModelForm):
 
     class Meta:
@@ -35,6 +42,12 @@ class Segundo_parcialForm(forms.ModelForm):
         if Segundo_parcial.objects.filter(nombre = clean_data.get("nombre")):
             raise ValidationError("Ya está calificadx este alumnx")
         return clean_data
+
+class Segundo_parcial_edit_Form(forms.ModelForm):
+
+    class Meta:
+        model = Segundo_parcial
+        fields = ('nombre','calif_ensay_2do', 'calif_expo_2do', 'participacion_2do',)
 
 class FinalForm(forms.ModelForm):
 
@@ -50,6 +63,12 @@ class FinalForm(forms.ModelForm):
             raise ValidationError("Ya está calificadx este alumnx")
         return clean_data
 
+class Final_edit_Form(forms.ModelForm):
+
+    class Meta:
+        model = Final
+        fields = ('nombre','calif_ensay_final', 'calif_expo_final', 'participacion_final',)
+
 class AutobiografiaForm(forms.ModelForm):
 
     class Meta:
@@ -63,3 +82,9 @@ class AutobiografiaForm(forms.ModelForm):
         if Autobiografia.objects.filter(nombre = clean_data.get("nombre")):
             raise ValidationError("Ya está calificadx este alumnx")
         return clean_data
+
+class Autobiografia_edit_Form(forms.ModelForm):
+
+    class Meta:
+        model = Autobiografia
+        fields = ('nombre','autobiografia',)
