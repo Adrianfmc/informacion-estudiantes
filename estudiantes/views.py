@@ -9,7 +9,13 @@ from django.db.models import F
 
 def lista_alumnx(request):
     alumnxs = Alumnx.objects.order_by('nombre')
-    return render(request, 'estudiantes/lista_alumnx.html', {'alumnxs':alumnxs})
+    primer_parcials = Primer_parcial.objects.annotate(calif_mono60=F('calif_mono')*Decimal(.6),
+                                                    calif_expo_1er10=F('calif_expo_1er')*Decimal(.1),
+                                                    participacion_1er30=F('participacion_1er')*Decimal(.3),
+                                                    promedio_1erparcial=(F('calif_mono')*Decimal(.6))+
+                                                    (F('calif_expo_1er')*Decimal(.1))+
+                                                    (F('participacion_1er')*Decimal(.3))).order_by('nombre')
+    return render(request, 'estudiantes/lista_alumnx.html', {'alumnxs':alumnxs}, {'primer_parcials':primer_parcials})
 
 def alumnx_nuevo(request):
     if request.method == "POST":
