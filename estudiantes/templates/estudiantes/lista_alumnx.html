@@ -22,6 +22,7 @@
         <th>Autobiografía</th>
       </tr>
       {% for alumnx in alumnxs %}
+
       <tr>
             <td>{{ alumnx.nombre|linebreaksbr }}</td>
             <td>{{ alumnx.num_cuenta|linebreaksbr }}</td>
@@ -32,11 +33,9 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
             <td><a class="btn btn-default" href="{% url 'alumnx_edit' pk=alumnx.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href="{% url 'eliminar_alumnx' pk=alumnx.pk %}" class = "btn btn-danger">Borrar</a></td> 
       </tr>
-
 
       {% endfor %}
 

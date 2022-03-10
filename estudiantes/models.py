@@ -28,7 +28,7 @@ class Alumnx(models.Model):
         return self.nombre
 
 class Primer_parcial(models.Model):
-    nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE)
+    nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE,related_name='primer_par')
     calif_mono = models.DecimalField(max_digits=3, decimal_places=1)
     calif_expo_1er = models.DecimalField(max_digits=3, decimal_places=1)
     participacion_1er = models.DecimalField(max_digits=3, decimal_places=1)
