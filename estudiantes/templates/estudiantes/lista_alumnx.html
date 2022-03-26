@@ -30,11 +30,11 @@
             <td>{{ alumnx.universidad|linebreaksbr }}</td>
             <td>{{ alumnx.asignatura|linebreaksbr }}</td>
             <td>{{ alumnx.ciclo|linebreaksbr }}</td>
+            <td>{{ alumnx.calif|linebreaksbr }}</td>
             <td></td>
             <td></td>
-            <td></td>
-            <td><a class="btn btn-default" href="{% url 'alumnx_edit' pk=alumnx.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-            <td><a href="{% url 'eliminar_alumnx' pk=alumnx.pk %}" class = "btn btn-danger">Borrar</a></td> 
+            <td><a class="btn btn-default" href="{% url 'alumnx_edit' pk=alumnx.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+            <td><a href="{% url 'eliminar_alumnx' pk=alumnx.id %}" class = "btn btn-danger">Borrar</a></td> 
       </tr>
 
       {% endfor %}
