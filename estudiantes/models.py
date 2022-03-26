@@ -35,6 +35,10 @@ class Primer_parcial(models.Model):
 
     def __str__(self):
         return str(self.nombre)
+    
+    def promedio(self):
+        prom = float(self.calif_mono)*.6 + float(self.calif_expo_1er)*.1 + float(self.participacion_1er)*.3
+        return prom
 
 class Segundo_parcial(models.Model):
     nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE)

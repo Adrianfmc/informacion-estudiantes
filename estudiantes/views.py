@@ -9,27 +9,15 @@ from django.forms.models import model_to_dict
 
 
 def lista_alumnx(request):
-
-    primer_parcials = Primer_parcial.objects.annotate(promedio_1erparcial=(F('calif_mono')*Decimal(.6))+
-                                                    (F('calif_expo_1er')*Decimal(.1))+
-                                                    (F('participacion_1er')*Decimal(.3))).order_by('nombre')
     alumnxs = Alumnx.objects.order_by('nombre')
     alumnos_modificados = []
     for alumn in alumnxs:
         alumno = model_to_dict(alumn)
-        print("alumno")
-        print(alumno)
         calif = alumn.primer_par.first()
-        print("calif")
-        print(calif)
         if calif:
-            alumno['calif'] = calif.calif_mono
-            print(alumno)
+            alumno['calif'] = calif.promedio
         alumnos_modificados.append(alumno)
-    print("alumnos_modificados")
-    print(alumnos_modificados)
     return render(request, 'estudiantes/lista_alumnx.html', {'alumnxs':alumnos_modificados})
-    # return render(request, 'estudiantes/lista_alumnx.html', {'alumnxs':alumnxs}, {'primer_parcials':primer_parcials}) 
 
 
 def alumnx_nuevo(request):
