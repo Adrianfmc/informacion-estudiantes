@@ -16,6 +16,15 @@ def lista_alumnx(request):
         calif = alumn.primer_par.first()
         if calif:
             alumno['calif'] = calif.promedio
+        prom_2dopar = alumn.segundo_par.first()
+        if prom_2dopar:
+            alumno['seg_parcial'] = prom_2dopar.promedio_2do
+        prom_final = alumn.final_par.first()
+        if prom_final:
+            alumno['fin_parcial'] = prom_final.promedio_final
+        autobiografia_calif = alumn.autobio.first()
+        if autobiografia_calif:
+            alumno['autobiografia'] = autobiografia_calif.autobiografia
         alumnos_modificados.append(alumno)
     return render(request, 'estudiantes/lista_alumnx.html', {'alumnxs':alumnos_modificados})
 

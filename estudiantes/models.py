@@ -41,25 +41,33 @@ class Primer_parcial(models.Model):
         return prom
 
 class Segundo_parcial(models.Model):
-    nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE)
+    nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE, related_name='segundo_par')
     calif_ensay_2do = models.DecimalField(max_digits=3, decimal_places=1, help_text="Ingrese la calificación del ensayo (2do parcial)")
     calif_expo_2do = models.DecimalField(max_digits=3, decimal_places=1, help_text="Ingrese la calificación de la exposición (2do parcial)")
     participacion_2do = models.DecimalField(max_digits=3, decimal_places=1)
 
     def __str__(self):
-        return self.nombre
+        return str(self.nombre)
+    
+    def promedio_2do(self):
+        prom_2do = float(self.calif_ensay_2do)*.6 + float(self.calif_expo_2do)*.1 + float(self.participacion_2do)*.3
+        return prom_2do
 
 class Final(models.Model):
-    nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE)
+    nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE, related_name='final_par')
     calif_ensay_final = models.DecimalField(max_digits=3, decimal_places=1, help_text="Ingrese la calificación del ensayo (3er parcial)")
     calif_expo_final = models.DecimalField(max_digits=3, decimal_places=1, help_text="Ingrese la calificación de la exposición (3er parcial)")
     participacion_final = models.DecimalField(max_digits=3, decimal_places=1)
 
     def __str__(self):
         return self.nombre
+    
+    def promedio_final(self):
+        prom_final = float(self.calif_ensay_final)*.6 + float(self.calif_expo_final)*.1 + float(self.participacion_final)*.3
+        return prom_final
 
 class Autobiografia(models.Model):
-    nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE)
+    nombre = models.ForeignKey('Alumnx', on_delete=models.CASCADE, related_name='autobio')
     autobiografia = models.DecimalField(max_digits=3, decimal_places=1, help_text="Ingrese la calificación de la autobiografía")
 
     def __str__(self):
