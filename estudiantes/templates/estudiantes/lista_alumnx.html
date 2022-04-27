@@ -20,6 +20,7 @@
         <th>2do Parcial</th>
         <th>Final</th>
         <th>Autobiografía</th>
+        <th>Promedio Final</th>
       </tr>
       {% for alumnx in alumnxs %}
 
@@ -34,6 +35,7 @@
             <td>{{ alumnx.seg_parcial|floatformat:1|linebreaksbr }}</td>
             <td>{{ alumnx.fin_parcial|floatformat:1|linebreaksbr }}</td>
             <td>{{ alumnx.autobiografia|floatformat:1|linebreaksbr }}</td>
+            <td>{{ alumnx.prom_final|floatformat:1|linebreaksbr }}</td>
             <td><a class="btn btn-default" href="{% url 'alumnx_edit' pk=alumnx.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href="{% url 'eliminar_alumnx' pk=alumnx.id %}" class = "btn btn-danger">Borrar</a></td> 
       </tr>

@@ -8,23 +8,35 @@ from django.db.models import F
 from django.forms.models import model_to_dict
 
 
+
 def lista_alumnx(request):
+    print(request.GET.get('universidad'))
     alumnxs = Alumnx.objects.order_by('nombre')
     alumnos_modificados = []
     for alumn in alumnxs:
         alumno = model_to_dict(alumn)
         calif = alumn.primer_par.first()
         if calif:
-            alumno['calif'] = calif.promedio
+            alumno['calif'] = calif.promedio()
+        else:
+            alumno['calif'] = 0
         prom_2dopar = alumn.segundo_par.first()
         if prom_2dopar:
-            alumno['seg_parcial'] = prom_2dopar.promedio_2do
+            alumno['seg_parcial'] = prom_2dopar.promedio_2do()
+        else:
+            alumno['seg_parcial'] = 0
         prom_final = alumn.final_par.first()
         if prom_final:
-            alumno['fin_parcial'] = prom_final.promedio_final
+            alumno['fin_parcial'] = prom_final.promedio_final()
+        else:
+            alumno['fin_parcial'] = 0
         autobiografia_calif = alumn.autobio.first()
         if autobiografia_calif:
             alumno['autobiografia'] = autobiografia_calif.autobiografia
+        else:
+            alumno['autobiografia'] = 0
+        final_asignatura =  alumno['calif']*.3 + alumno['seg_parcial']*.3 + alumno['fin_parcial']*.3 + float(alumno['autobiografia'])*.1
+        alumno['prom_final'] = final_asignatura
         alumnos_modificados.append(alumno)
     return render(request, 'estudiantes/lista_alumnx.html', {'alumnxs':alumnos_modificados})
 

@@ -4,7 +4,7 @@ from django.utils import timezone
 
 UNIVERSIDAD_OP = (
     (1, 'Ibero León'),
-    (2, 'Ibero Tijuana')
+    (2,'Ibero Tijuana')
 )
 
 ASIGNATURA_OP = (
