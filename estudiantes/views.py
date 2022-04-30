@@ -10,8 +10,7 @@ from django.forms.models import model_to_dict
 
 
 def lista_alumnx(request):
-    print(request.GET.get('universidad'))
-    alumnxs = Alumnx.objects.order_by('nombre')
+    alumnxs = Alumnx.objects.order_by('nombre').filter()
     alumnos_modificados = []
     for alumn in alumnxs:
         alumno = model_to_dict(alumn)
