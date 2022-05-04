@@ -1,13 +1,45 @@
 {% extends 'estudiantes/base.html' %}
 
 {% block content %}
+		<!-- filter -->
 
-    <a href="{% url 'alumnx_nuevo' %}" class="btn btn-primary">Alumnx nuevx</a>
-    <a href="{% url 'lista_calif1erpar' %}" class="btn btn-success">Calificaciones primer parcial</a>
-    <a href="{% url 'lista_calif2dopar' %}" class="btn btn-warning">Calificaciones segundo parcial</a>
-    <a href="{% url 'lista_calif_final' %}" class="btn btn-info">Calificaciones parcial final</a>
-    <a href="{% url 'lista_autobiografia' %}" class="btn btn-primary">Autobiografía</a>
+	<div class="col-lg-3 mx-auto">
+			<div class="list-group">
 
+			<a href="/?asignatura=1" class="list-group-item list-group-item-action">Interculturalidad</a>
+			<a href="/?asignatura=2" class="list-group-item list-group-item-action">Persona y Humanismo</a>
+
+		</div>
+	</div>
+
+
+
+
+  <div class = "row">
+    <div class = "col">
+      <div class = "card card-body">
+        <a href="{% url 'alumnx_nuevo' %}" class="btn btn-primary">Alumnx nuevx</a>
+        <a href="{% url 'lista_calif1erpar' %}" class="btn btn-success">Calificaciones primer parcial</a>
+        <a href="{% url 'lista_calif2dopar' %}" class="btn btn-warning">Calificaciones segundo parcial</a>
+        <a href="{% url 'lista_calif_final' %}" class="btn btn-info">Calificaciones parcial final</a>
+        <a href="{% url 'lista_autobiografia' %}" class="btn btn-primary">Autobiografía</a>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+    <div class = "row">
+      <div class = "col">
+        <div class = "card card-body">
+          <form method = "get">{{ myFilter.form }}
+            <button class = btn btn-primary type = "submit">
+              Elige
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+      
     <table class="content-table">
       <tr>
         <th>Nombre</th>

@@ -6,11 +6,16 @@ from django.db.models.functions import Coalesce
 from decimal import Decimal
 from django.db.models import F
 from django.forms.models import model_to_dict
+from .filters import AlumnxFilter
 
 
 
 def lista_alumnx(request):
-    alumnxs = Alumnx.objects.order_by('nombre').filter()
+    asignaturaID=request.GET.get('asignatura')
+    if asignaturaID:
+        alumnxs = Alumnx.objects.filter(asignatura=asignaturaID)
+    else:
+        alumnxs = Alumnx.objects.order_by('nombre')
     alumnos_modificados = []
     for alumn in alumnxs:
         alumno = model_to_dict(alumn)
